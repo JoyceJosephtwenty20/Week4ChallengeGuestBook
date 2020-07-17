@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> See all Happy Birthday Posts </title>
+    <div th:replace="base :: headerfg"></div>
+</head>
+<body>
+<div th:replace="base :: navlinksfg"></div>
+<table class="table table-hover">
+    <h3> <i>  [[${allmessage}]] </i> </h3>
+    <thead>
+    <tr>
+        <th>Lucky # </th>
+        <th>Name </th>
+        <th>Date </th>
+        <th>Wishes</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="guestbook : ${guestbooks}">
+        <td>[[${guestbook.id}]]</td>
+        <td>[[${guestbook.name}]]</td>
+        <td>[[${guestbook.date}]]</td>
+        <td>[[${guestbook.wishes}]]</td>
+        <td>
+            <button><a th:href="@{/update/{id} (id = ${guestbook.id})}">Update</a></button>
+            <button><a th:href="@{/view/{id} (id = ${guestbook.id})}"> View </a></button>
+            <button><a th:href="@{/delete/{id} (id = ${guestbook.id})}">Delete</a></button>
+        </td>
+    </tr>
+    </tbody>
+
+</table>
+<div th:replace="base :: footerfg"></div>
+</body>
+</html>
